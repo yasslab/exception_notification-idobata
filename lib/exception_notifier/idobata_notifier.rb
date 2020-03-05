@@ -66,15 +66,15 @@ module ExceptionNotifier
 <span class='label label-danger'>#{exception.class.to_s}</span>
 <b>#{CGI.escapeHTML(exception.message.inspect)}</b>
 
-<h4>Backtrace:</h4>
-<pre>#{format_backtrace(exception.backtrace).join("\n")}</pre>
-
 <h4>Environments:</h4>
 <table>
   <tbody>
     #{table_rows_from(@options.merge(enviroments))}
   </tbody>
 </table>
+
+<h4>Backtrace:</h4>
+<pre>#{format_backtrace(exception.backtrace).join("\n")}</pre>
       HTML
     end
 
