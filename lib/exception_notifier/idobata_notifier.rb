@@ -15,7 +15,8 @@ module ExceptionNotifier
     def call(exception, options={})
       enviroments =
         if options[:env]
-          request_option(ActionDispatch::Request.new(options[:env]))
+          data = options[:env]['exception_notifier.exception_data']&.stringify_keys
+          request_option(ActionDispatch::Request.new(options[:env])).tap { |req| req.merge!(data) if data.present? }
         else
           # [TODO] - Add option specification route for non-web notification
           {'Timestamp' => Time.zone.now}
