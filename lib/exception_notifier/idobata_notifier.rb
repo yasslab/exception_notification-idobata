@@ -67,7 +67,6 @@ module ExceptionNotifier
 <span class='label label-danger'>#{exception.class.to_s}</span>
 <b>#{CGI.escapeHTML(exception.message.inspect)}</b>
 
-<h4>Environments:</h4>
 <table>
   <tbody>
     #{table_rows_from(@options.merge(enviroments))}
